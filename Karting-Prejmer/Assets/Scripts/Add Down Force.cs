@@ -5,7 +5,7 @@ using UnityEngine;
 public class AddDownForce : MonoBehaviour
 {
     public Rigidbody rigidbody;
-    public float _AddDownForceValue = 50f; 
+    public float _AddDownForceValue = 100f; 
     // Start is called before the first frame update
     void Start()
     {
