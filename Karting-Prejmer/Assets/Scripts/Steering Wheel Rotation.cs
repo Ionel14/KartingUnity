@@ -6,7 +6,7 @@ public class SteeringWheelRotation : MonoBehaviour
 {
     [SerializeField] Transform _SteeringWheelTransform;
 
-    private float _rotationSpeed = 200f;
+    private float _rotationSpeed = 400f;
     private float _returnSpeed = 20f;
 
     private Quaternion _initialRotation;
