@@ -43,5 +43,8 @@ public class CameraChange : MonoBehaviour
             _FirstCamera.SetActive(true);
             _ThirdCamera.SetActive(false);
         }
+        _ThirdCamera.GetComponent<AudioListener>().enabled = !_ThirdCamera.GetComponent<AudioListener>().enabled;
+        _FirstCamera.GetComponent<AudioListener>().enabled = !_FirstCamera.GetComponent<AudioListener>().enabled;
+
     }
 }

@@ -357,6 +357,10 @@
 -analyzer:"C:/Program Files/Unity/Hub/Editor/2022.3.20f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 "Assets/AutoGrass Tool/AutoGrass.cs"
 "Assets/PolygonPi/FenceLayout/FenceLayout.cs"
+"Assets/Scripts/Add Down Force.cs"
+"Assets/Scripts/CameraChange.cs"
+"Assets/Scripts/Steering Wheel Rotation.cs"
+"Assets/Scripts/Wheel Controller.cs"
 -langversion:9.0
 
 /deterministic

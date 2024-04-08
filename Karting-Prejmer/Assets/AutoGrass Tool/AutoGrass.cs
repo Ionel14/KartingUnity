@@ -25,6 +25,7 @@ public class AutoGrass : EditorWindow
         mat = new Material(Shader.Find("Unlit/Transparent"));
     }
 
+    [System.Obsolete]
     void OnGUI()
     {
         GUILayout.Label("Select terrain with textures and grass");
