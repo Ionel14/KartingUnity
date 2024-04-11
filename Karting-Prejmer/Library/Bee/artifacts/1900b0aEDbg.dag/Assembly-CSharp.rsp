@@ -358,7 +358,10 @@
 "Assets/AutoGrass Tool/AutoGrass.cs"
 "Assets/PolygonPi/FenceLayout/FenceLayout.cs"
 "Assets/Scripts/Add Down Force.cs"
+"Assets/Scripts/AICar.cs"
 "Assets/Scripts/CameraChange.cs"
+"Assets/Scripts/CarMover.cs"
+"Assets/Scripts/SoundManager.cs"
 "Assets/Scripts/Steering Wheel Rotation.cs"
 "Assets/Scripts/Wheel Controller.cs"
 -langversion:9.0
