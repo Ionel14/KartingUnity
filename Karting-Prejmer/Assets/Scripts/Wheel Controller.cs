@@ -14,13 +14,14 @@ public class WheelController : MonoBehaviour
     [SerializeField] Transform _BackRightTransform;
     [SerializeField] Transform _BackLeftTransform;
 
-    private float _acceleration = 300f;
+    private float _acceleration = 500f;
     private float _brakingForce = 300f;
-    private float _maxTurnAngle = 40f;
+    private float _maxTurnAngle = 30f;
 
     private float _currentAcceleration = 0f;
     private float _currentBrakeForce = 0f;
     private float _currentTurnAngle = 0f;
+    private float _maxRotationAngle = 50f;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +32,13 @@ public class WheelController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.R) && 
+            (Mathf.Abs(transform.eulerAngles.x) > _maxRotationAngle && Mathf.Abs(transform.eulerAngles.x) < 360 - _maxRotationAngle
+            || Mathf.Abs(transform.eulerAngles.z) > _maxRotationAngle && Mathf.Abs(transform.eulerAngles.z) < 360 - _maxRotationAngle))
+        {
+            transform.eulerAngles = new Vector3(0, -90, 0);
+            transform.position += new Vector3(0, 2, 0);
+        }
 
         _currentAcceleration = _acceleration * -1 * Input.GetAxis("Vertical");
 
@@ -43,8 +51,8 @@ public class WheelController : MonoBehaviour
             _currentBrakeForce = 0f;
         }
 
-        _FrontLeft.motorTorque = _currentAcceleration;
         _FrontRight.motorTorque = _currentAcceleration;
+        _FrontLeft.motorTorque = _currentAcceleration;
 
         _FrontRight.brakeTorque = _currentBrakeForce;
         _FrontLeft.brakeTorque = _currentBrakeForce;

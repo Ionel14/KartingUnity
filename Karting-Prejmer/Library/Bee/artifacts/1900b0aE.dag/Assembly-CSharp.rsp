@@ -371,8 +371,10 @@
 "Assets/Scripts/AICar.cs"
 "Assets/Scripts/CameraChange.cs"
 "Assets/Scripts/SoundManager.cs"
+"Assets/Scripts/SpriteSignCollider.cs"
 "Assets/Scripts/Steering Wheel Rotation.cs"
 "Assets/Scripts/Wheel Controller.cs"
+"Assets/Scripts/WinCheck.cs"
 -langversion:9.0
 
 /deterministic
