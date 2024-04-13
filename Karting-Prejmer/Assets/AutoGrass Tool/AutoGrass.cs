@@ -1,7 +1,8 @@
 //Doctrina(c)
 //http://doctrina-kharkov.blogspot.com/
+
+#if UNITY_EDITOR
 using UnityEngine;
-using System.Collections;
 using UnityEditor;
 
 public class AutoGrass : EditorWindow
@@ -82,3 +83,4 @@ public class AutoGrass : EditorWindow
         }
     }
 }
+#endif
