@@ -1,14 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Audio;
 
 public class ChangeVolume : MonoBehaviour
 {
-    public AudioMixer audioMixer;
+    public static float _Volume;
+    public static bool _Changed = false;
     public void SetVolume (float volume)
     {
-        audioMixer.SetFloat("volume", volume);
+        _Volume = volume;
+        _Changed = true;
     }
 
 }

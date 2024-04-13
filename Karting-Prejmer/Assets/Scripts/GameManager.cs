@@ -5,16 +5,19 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Splines;
 
-public class WinCheck : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     [SerializeField] public SpriteSignCollider _SpriteSignCollider;
     [SerializeField] public TextMeshProUGUI _WinText;
     [SerializeField] public SoundManager _SoundManager;
     [SerializeField] public SplineAnimate _CarSpline;
+    [SerializeField] public GameObject _Enemy;
+
 
     private float _countdownDuration = 1f; // Duration for each count (in seconds)
     private float _startDelay = 1f; // Delay before starting the countdown
     private bool _gameEnded = false;
+    public static bool _CountdownStarted = false;
 
     void Start()
     {
@@ -32,10 +35,16 @@ public class WinCheck : MonoBehaviour
 
     IEnumerator StartCountdown()
     {
+        _CountdownStarted = true;
         yield return new WaitForSecondsRealtime(_startDelay);
 
         for (int count = 3; count > 0; count--)
         {
+            while (PauseMenu.GameIsPaused)
+            {
+                _WinText.text = "";
+                yield return new WaitForSecondsRealtime(_countdownDuration);
+            }
             _WinText.text = count.ToString();
             // Wait for the countdown duration
             yield return new WaitForSecondsRealtime(_countdownDuration);
@@ -43,10 +52,12 @@ public class WinCheck : MonoBehaviour
 
         _WinText.text = "Go!";
         Time.timeScale = 1f; // Unfreeze the game
+        _Enemy.GetComponent<SplineAnimate>().Duration = 180 - 40 * ChangeDifficulty._Difficulty;
         _CarSpline.Play();
 
         yield return new WaitForSecondsRealtime(_countdownDuration);
         _WinText.text = "";
+        _CountdownStarted = false;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -78,7 +89,7 @@ public class WinCheck : MonoBehaviour
     {
         _WinText.SetText("You Lost");
         _SoundManager._BackgroundSound.Stop();
-        _SoundManager._loseSound.Play();
+        _SoundManager._LoseSound.Play();
         Invoke(nameof(RestartGame), 5);
     }
 

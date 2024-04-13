@@ -4,7 +4,7 @@ public class SoundManager : MonoBehaviour
 {
     [SerializeField] public AudioSource _BackgroundSound;
     [SerializeField] public AudioSource _WinSound;
-    [SerializeField] public AudioSource _loseSound;
+    [SerializeField] public AudioSource _LoseSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,13 +16,13 @@ public class SoundManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (PauseMenu.GameIsPaused)
+        if (ChangeVolume._Changed)
         {
-            _BackgroundSound.volume = 0f;
-        }
-        else
-        {
-            _BackgroundSound.volume = 0.8f;
+            ChangeVolume._Changed = false;
+
+            _BackgroundSound.volume = ChangeVolume._Volume;
+            _WinSound.volume = ChangeVolume._Volume;
+            _LoseSound.volume = ChangeVolume._Volume;
         }
     }
 
